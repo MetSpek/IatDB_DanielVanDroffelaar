@@ -1,25 +1,28 @@
 @extends('default')
 @section('content')
-<h1>Profiel</h1>
+<h1>{{$persoon->name}}</h1>
 
-<section>
-    <header><h2>Informatie</h2></header>
-    <figure><img src="" alt=""></figure>
-    <h3>{{$user->name}}</h3>
-    <ul>
-        <li><h4>Leeftijd: {{$user->age}} </h4></li>
-        <li><h4>Woonplaats: {{$user->plaats}}</h4></li>
-    </ul>
-</section>
 
-<section>
+   
+    
+<article>
     <header><h2>Gallerij</h2></header>
-   
-    <a href="">Wijzig</a>
-</section>
+    <ul>
+        @foreach($image as $image)
+            @include('components.pictureCard')
+        @endforeach
+    </ul>
+    
+    <a href="/imageUpload">Voeg afbeelding toe</a>
+</article>
 
-<section>
+<article>
     <header><h2>Reviews</h2></header>
-   
-</section>
+    <ul>
+        @foreach($review as $review)
+            @include('components.reviewCard')
+        @endforeach
+    </ul>
+    
+</article>
 @endsection

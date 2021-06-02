@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddInfoToUsersTable extends Migration
+class CreateSoortenTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddInfoToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('age')->default(69);
-            $table->string('plaats')->default("test");
+        Schema::create('soorten', function (Blueprint $table) {
+            $table->string('soort')->unique();
         });
     }
 
@@ -26,8 +25,6 @@ class AddInfoToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('soorten');
     }
 }

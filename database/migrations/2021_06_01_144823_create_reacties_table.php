@@ -14,11 +14,13 @@ class CreateReactiesTable extends Migration
     public function up()
     {
         Schema::create('reacties', function (Blueprint $table) {
-            $table->id();
+            $table->id('verzoek_id');
             $table->foreignId('eigenaar_id');
             $table->foreignId('zoeker_id');
-            $table->string('dier_naam');
             $table->string('zoeker_naam');
+            $table->foreignId("dier_id");
+            $table->string('dier_naam');
+            
             
         });
     }
