@@ -8,6 +8,18 @@
     
     @yield('css') 
     @yield('js')
+    <script>
+        window.onload = function(){
+            if(localStorage.getItem("melding") == "true"){
+                document.getElementById("-js--melding-tekst").innerHTML = localStorage.getItem("message");
+                document.getElementById("-js--melding").style.height  = "80px";
+                localStorage.setItem("melding", "false");
+                localStorage.setItem("message", " ");
+                setTimeout(function(){ document.getElementById("-js--melding").style.height = "0px"}, 5000);
+            }
+        }
+    
+    </script>
     <link rel="stylesheet" href="/css/menu.css">
     <title>PassenOpJeDier</title>
 </head>
@@ -30,6 +42,14 @@
             </ul>
         </nav>
     </header>
-    @yield('content')
+
+    <section>
+        <div id="-js--melding">
+            <p id="-js--melding-tekst">Melding</p>
+        </div>
+    </section>
+    <main>
+        @yield('content')
+    </main>
 </body>
 </html>

@@ -1,11 +1,19 @@
 @extends('default')
+@section('js')
+<script>
+     function verzoek(){
+        localStorage.setItem("melding", "true");
+        localStorage.setItem("message", "Oppas verzoek is ingedient");
+    }
 
-
+</script>
+@endsection
 @section('content')
 <article>
     <a href="/dierenlijst">< Terug</a>
     <section>
         <h2>{{$dier->name}}</h2>
+        <h3>Eigenaar: {{$eigenaar->name}}</h3>
         <h3>{{$dier->soort}}</h3>
         <h4>{{$dier->costs}} euro per uur</h4>
         <h5>Opmerkingen: </h5>
@@ -21,10 +29,10 @@
     <section>
         <form id="verzoek" method="POST">
             @csrf
-            <input type="number" name="dier_id" value={{$dier->number}}></input>
-            <input type="text" name="dier_naam" value={{$dier->name}}></input>
-            <input type="number" name="eigenaar_id" value={{$dier->eigenaar}}></input>
-            <button type="submit">Ik wil oppassen!</button>
+            <input type="hidden" name="dier_id" value={{$dier->number}}></input>
+            <input type="hidden" name="dier_naam" value={{$dier->name}}></input>
+            <input type="hidden" name="eigenaar_id" value={{$dier->eigenaar}}></input>
+            <button type="submit" onclick="verzoek()">Ik wil oppassen!</button>
         </form>
         
     </section>

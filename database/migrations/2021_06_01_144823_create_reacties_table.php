@@ -20,8 +20,6 @@ class CreateReactiesTable extends Migration
             $table->string('zoeker_naam');
             $table->foreignId("dier_id");
             $table->string('dier_naam');
-            
-            
         });
     }
 

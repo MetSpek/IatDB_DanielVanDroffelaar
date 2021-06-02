@@ -7,13 +7,12 @@
     
 <article>
     <header><h2>Gallerij</h2></header>
+    <a href="/imageUpload">Voeg afbeelding toe</a>
     <ul>
         @foreach($image as $image)
             @include('components.pictureCard')
         @endforeach
     </ul>
-    
-    <a href="/imageUpload">Voeg afbeelding toe</a>
 </article>
 
 <article>

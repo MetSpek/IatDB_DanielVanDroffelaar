@@ -5,7 +5,7 @@
 </header>
 
 <article>
-    <h3>Je dieren</h3>
+    <h3>Mijn oppas aanvragen</h3>
     <ul>
         @foreach($dier as $dier)
             @include('components.animalCard--lijst')
@@ -15,7 +15,7 @@
 </article>
 
 <article>
-    <h3>Gekregen verzoeken</h3>
+    <h3>Gekregen oppas verzoeken</h3>
     <ul>
         @foreach($verzoek as $verzoek)
             @include('components.verzoek')

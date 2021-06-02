@@ -17,20 +17,30 @@ class AdminController extends Controller
     }
 
     public function ban(Request $request){  
-        $usernames = \App\Models\User::all('name');
-        $persoon = $request;
-        for($i = 0; $i < count($usernames); $i++){
-            if($persoon->persoon == $usernames[$i]->name){
-                $persoon = \App\Models\User::all()->where("name", $usernames[$i]->name)->first();
-                $persoon->banned = "BANNED";
-                try{
-                    $persoon->save();
-                    return redirect('/admin');
-                }
-                catch(Exception $e){
-                    return redirect('/admin');
-                }
-            } 
+        $usernames = \App\Models\User::all();
+        $userids = \App\Models\User::all('id');
+        $persoon = $request->persoon;
+        $toBeBanned = \App\Models\User::all()->where("name", $persoon)->first();
+        if($toBeBanned != null){
+            \App\Models\AnimalInfo::where("eigenaar", $toBeBanned->id)->delete();
+            if(\App\Models\Reacties::first() != null){
+                \App\Models\Reacties::first()->where("zoeker_naam", $username)->delete();
+            }
+            if($toBeBanned->banned == "BANNED"){
+                return redirect('/error/3');
+            } else {
+                $toBeBanned->banned = "BANNED";
+            }
+            
+            try{
+                $toBeBanned->save();
+                return redirect('/admin');
+            }
+            catch(Exception $e){
+                return redirect('/admin');
+            }
+        } else {
+            return redirect('/error/4');
         }
         
     }

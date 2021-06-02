@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+
   
 class ImageUploadController extends Controller
 {
@@ -29,18 +30,29 @@ class ImageUploadController extends Controller
     public function imageUploadPost(Request $request, \App\Models\Images $images)
     {
         $user = Auth::user();
-        $request->image->storeAs('images', $request->image->getClientOriginalName());
-        $afbeelding = $request->image->getClientOriginalName();
+        $image = $request->image;
+        $filesize = filesize($image);
+        if($filesize > 0){
+            $image->storeAs('images', $request->image->getClientOriginalName());
+            $afbeelding = $request->image->getClientOriginalName();
+            $images->fileName = $afbeelding;
+            $images->user_id =  $user->id;
+            $url = "/profiel/$user->id";
 
-        $images->fileName = $afbeelding;
-        $images->user_id =  $user->id;
+            try{
+                $images->save();
+                return redirect($url);
+            }
+            catch(Exception $e){
+                return redirect($url);
+            }
+        } else {
+            return redirect('/error/5');
+        }
         
-        try{
-            $images->save();
-            return redirect('/');
-        }
-        catch(Exception $e){
-            return redirect('/');
-        }
+    }
+
+    public function teGroot(){
+        return view('tegroot');
     }
 }

@@ -26,7 +26,8 @@ class CreateDierenTable extends Migration
             $table->integer('costs');
             $table->time('from')->nullable();
             $table->time('to')->nullable();
-            $table->string('comment');
+            $table->string('comment')->nullable();
+            $table->text('image');
         });
     }
 
