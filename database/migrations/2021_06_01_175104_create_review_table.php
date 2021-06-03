@@ -16,7 +16,9 @@ class CreateReviewTable extends Migration
         Schema::create('review', function (Blueprint $table) {
             $table->id();
             $table->foreignId('reviewed');
-            $table->text('reviewer');
+            $table->foreign('reviewed')->references('id')->on('users');
+            $table->string('reviewer');
+            $table->foreign('reviewer')->references('name')->on('users');
             $table->integer('score');
             $table->text('comment')->nullable();
         });
@@ -29,6 +31,11 @@ class CreateReviewTable extends Migration
      */
     public function down()
     {
+        Schema::table('review', function (Blueprint $table){
+            $table->dropForeign('review_reviewed_foreign');
+            $table->dropForeign('review_reviewer_foreign');
+        });
+
         Schema::dropIfExists('review');
     }
 }

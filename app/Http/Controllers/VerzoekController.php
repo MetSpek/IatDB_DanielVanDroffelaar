@@ -9,13 +9,14 @@ use DB;
 class VerzoekController extends Controller
 {
     public function weigerVerzoek($dier, $id){
-        $weiger = \App\Models\Reacties::all()->where("dier_id", $dier)->delete();
+        \App\Models\Reacties::where("dier", $dier)->where("zoeker", $id)->delete();
+        
         return redirect('/');
      }
  
      public function accepteerVerzoek($dier, $id, $user){
+        \App\Models\Reacties::where("dier", $dier)->where("zoeker", $id)->delete();
         \App\Models\AnimalInfo::where("number", $dier)->delete();
-        \App\Models\Reacties::all()->where("dier_id", $dier)->delete();
         $url = "/review/{$user}";
  
         
@@ -25,7 +26,7 @@ class VerzoekController extends Controller
 
      public function slaverzoekop(Request $request, \App\Models\Reacties $reactie, $id){
         $user = Auth::user();
-        $reacties = \App\Models\Reacties::all()->where("dier_id", $id)->where("zoeker_id", $user->id);
+        $reacties = \App\Models\Reacties::all()->where("dier", $id)->where("zoeker", $user->id);
         $eigenaar = \App\Models\AnimalInfo::all()->where("number", $id)->where("eigenaar", $user->id)->first();
            
         if($eigenaar == null){
@@ -33,10 +34,10 @@ class VerzoekController extends Controller
                 return redirect('/error/1');
             } else {
                 $reactie->dier_naam = $request->input('dier_naam');
-                $reactie->dier_id = $request->input('dier_id');
-                $reactie->eigenaar_id = $request->input('eigenaar_id');
+                $reactie->dier = $request->input('dier');
+                $reactie->eigenaar = $request->input('eigenaar');
                 $reactie->zoeker_naam = $user->name;
-                $reactie->zoeker_id = $user->id;
+                $reactie->zoeker = $user->id;
 
                 try{
                     $reactie->save();

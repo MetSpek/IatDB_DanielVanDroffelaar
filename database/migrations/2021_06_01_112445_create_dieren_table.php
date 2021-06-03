@@ -16,11 +16,11 @@ class CreateDierenTable extends Migration
         Schema::create('dieren', function (Blueprint $table) {
             $table->id('number');
             $table->foreignid('eigenaar');
-            $table->foreign('eigenaar')->references('id')->on('users');
+            $table->foreign('eigenaar')->references('id')->on('users')->onDelete('cascade');
             $table->string('plaats');
             $table->string('name');
             $table->string('soort');
-            $table->foreign('soort')->references('soort')->on('soorten');
+            $table->foreign('soort')->references('soort')->on('soorten')->onDelete('cascade');
             $table->date('start');
             $table->date('end');
             $table->integer('costs');
@@ -42,6 +42,8 @@ class CreateDierenTable extends Migration
             $table->dropForeign('dieren_eigenaar_foreign');
             $table->dropForeign('dieren_soort_foreign');
         });
+
         Schema::dropIfExists('dieren');
+        
     }
 }

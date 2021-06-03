@@ -15,10 +15,13 @@ class CreateReactiesTable extends Migration
     {
         Schema::create('reacties', function (Blueprint $table) {
             $table->id('verzoek_id');
-            $table->foreignId('eigenaar_id');
-            $table->foreignId('zoeker_id');
+            $table->foreignId('eigenaar');
+            $table->foreign('eigenaar')->references('eigenaar')->on('dieren');
+            $table->foreignId('zoeker');
+            $table->foreign('zoeker')->references('id')->on('users');
             $table->string('zoeker_naam');
-            $table->foreignId("dier_id");
+            $table->foreignId("dier");
+            $table->foreign('dier')->references('number')->on('dieren');
             $table->string('dier_naam');
         });
     }
@@ -30,6 +33,12 @@ class CreateReactiesTable extends Migration
      */
     public function down()
     {
+        Schema::table('reacties', function (Blueprint $table){
+            $table->dropForeign('reacties_eigenaar_foreign');
+            $table->dropForeign('reacties_zoeker_foreign');
+            $table->dropForeign('reacties_dier_foreign');
+        });
+
         Schema::dropIfExists('reacties');
     }
 }

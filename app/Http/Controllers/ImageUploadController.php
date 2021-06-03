@@ -36,7 +36,7 @@ class ImageUploadController extends Controller
             $image->storeAs('images', $request->image->getClientOriginalName());
             $afbeelding = $request->image->getClientOriginalName();
             $images->fileName = $afbeelding;
-            $images->user_id =  $user->id;
+            $images->user =  $user->id;
             $url = "/profiel/$user->id";
 
             try{

@@ -1,0 +1,826 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+:root{
+    --primary-color: #8d6a9f;
+    --secondary-color: #F8FAF0;
+    --tertiary-color: #6BC771;
+
+    --dropdown-bg-color: #825F95;
+    --dropdown-button-color: #B39BBF;
+
+    --button-border-color: #4394C7;
+    --button-inside-color: #72AFD5;
+    --button-shadow-color: #347EAD;
+    
+    --remove-border-color: #DC392E;
+    --remove-inside-color: #E3655B;
+    --remove-shadow-color: #AE271E;
+
+    --animal-card-color: #975043;
+
+    --send-border-color: #43B14B;
+    --send-shadow-color: #38943E;
+
+}
+
+/*General stuff*/
+body{
+    width: 100%;
+    background-color: var(--secondary-color);
+}
+
+ul{
+    list-style: none;
+}
+
+a {
+    color: black;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+p{
+    font-size: 1.6rem;
+}
+
+h1{
+    font-size: 2.2rem;
+}
+
+h2{
+    font-size: 2rem;
+}
+
+h3{
+    font-size: 1.8rem;
+}
+
+h4{
+    font-size: 1.6rem;
+}
+
+h5{
+    font-size: 1.5rem;
+}
+
+label, button{
+    font-size: 1.8rem;
+}
+
+main{
+    margin-top: 2rem;
+}
+
+.button{
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+    border: solid .3rem;
+    border-radius: .5rem;
+    border-color: var(--button-border-color);
+    background-color: var(--button-inside-color);
+    box-shadow: .3rem .3rem 0 var(--button-shadow-color);
+}
+
+.button:hover{
+    background-color: var(--button-border-color);
+}
+
+.button_bottom{
+    position: absolute;
+    bottom: 1rem;
+}
+
+.button_topRight{
+    position: absolute;
+    top: 0;
+    right: 2rem;
+}
+
+.button_verwijder{
+    border-color: var(--remove-border-color);
+    background-color: var(--remove-inside-color);
+    box-shadow: .3rem .3rem 0 var(--remove-shadow-color);
+}
+
+.button_verwijder:hover{
+    background-color: var(--remove-border-color);
+    cursor: pointer;
+}
+
+.button_send{
+    border-color: var(--send-border-color);
+    background-color: var(--tertiary-color);
+    box-shadow: .3rem .3rem 0 var(--send-shadow-color);
+}
+
+.button_send:hover{
+    background-color: var(--send-border-color);
+    cursor: pointer;
+}
+
+
+/*Default pagina*/
+.header_background{
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--primary-color);
+    
+}
+
+.header{
+    padding: 1rem;
+    width: 100%;
+    max-width: 100rem;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* menu */
+.header_dropdown {
+    float: right;
+    color: var(--secondary-color);
+    margin-right: 1rem;
+    border: none;
+    background: none;
+    font-size: 2.5rem;
+    padding: 0rem .5rem;
+    line-height: 3rem;
+}
+
+
+.header__logo{
+    font-size: 2.8rem;
+    color: var(--secondary-color);
+}
+
+.header__menu{
+    position: absolute;
+    z-index: 5;
+    right: 0;
+    top: 5.2rem;
+    background-color: var(--dropdown-bg-color);
+    width: 0rem;
+    overflow: hidden;
+    transition: .2s;
+    border-bottom-left-radius: 1rem;
+}
+
+.header__menu__link, .header__menu__list > li > form > a {
+    width: 95%;
+    height: 100%;
+    padding: 2rem 2rem;
+    margin-bottom: 1rem;
+    float: right;
+    background-color: var(--dropdown-button-color);
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+    transition: .5s;
+}
+
+.header__menu__link:hover, .header__menu__list > li > form > a:hover {
+  background-color: var(--dropdown-bg-color);
+  color: var(--secondary-color);
+  border: solid .3rem var(--dropdown-button-color);
+}
+
+/*Melding*/
+.melding{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 5.2rem;
+    width: 100%;
+    max-width: 50rem;
+    background-color: var(--tertiary-color);
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    
+}
+
+.melding__div{
+    height: 0rem;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.melding__div__tekst{
+    padding: 1rem 2rem;
+}
+
+
+/*Index*/
+.index{
+    display: grid;
+    grid-template-areas: 
+        'welkom'
+        'oppas'
+        'verzoek';
+    grid-gap: 1rem;
+    max-width: 100rem;
+    margin: 0 auto;
+}
+
+
+.index__welkom{
+    margin: 2rem 1rem;
+    grid-area: welkom;
+}
+
+.card_container{
+    position: relative;
+    background-color: var(--dropdown-button-color);
+    width: 95%;
+    max-width: 50rem;
+    margin: 0 auto;
+    min-height: 12rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    
+    margin-bottom: 2rem;
+    height: 100%;
+}
+
+
+.index__aanvragen{
+    grid-area: oppas;
+}
+
+.index__verzoeken{
+    grid-area: verzoek;
+}
+
+/*profiel*/
+.profiel{
+    display: grid;
+    grid-template-areas: 
+        'naam'
+        'gallerij'
+        'review';
+    grid-gap: 1rem;
+    max-width: 100rem;
+    margin: 0 auto;
+}
+
+.profiel__naam{
+    margin: 2rem 1rem;
+    grid-area: naam;
+}
+
+.profiel__gallerij{
+    grid-area: gallerij;
+}
+
+.profiel__review{
+    grid-area: review;
+}
+
+.card_wide{
+    max-width: 100rem;
+}
+
+/*dierenlijst*/
+.dierenlijst{
+    display: grid;
+    grid-template-areas: 
+        'titel'
+        'filter'
+        'dieren';
+    grid-gap: 1rem;
+    max-width: 100rem;
+    margin: 0 auto;
+}
+
+.dierenlijst__titel, .maakdier__titel, .admin__titel{
+    margin: 2rem 1rem;
+    grid-area: titel;
+}
+
+.dierenlijst__filter{
+    grid-area: filter;
+}
+
+.dierenlijst__dieren{
+    grid-area: dieren;
+}
+
+.dierenlijst__dieren__titel{
+    margin-bottom: 2rem;
+}
+
+.dierenlijst__filter__lijst{
+    margin-top: 1rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-row-gap: 1rem;
+}
+
+.dierenlijst__dieren__lijst{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 1rem;
+
+}
+
+.checkbox{
+    display: block;
+    position: relative;
+    padding-left: 2.5rem;
+    margin-bottom: 1.2rem;
+    cursor: pointer;
+    font-size: 2.2rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 1.8rem;
+}
+
+.checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.8rem;
+    width: 1.8rem;
+    background-color: #eee;
+    border-radius: .5rem;
+}
+
+
+.checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.checkbox input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+  
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox .checkmark:after {
+    left: .6rem;
+    top: .25rem;
+    width: .5rem;
+    height: 10px;
+    border: solid white;
+    border-width: 0 .3rem .3rem 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    }
+
+
+/*maak dier*/
+.maakdier{
+    display: grid;
+    grid-template-areas: 
+        'titel'
+        'form';
+    grid-gap: 1rem;
+    max-width: 100rem;
+    margin: 0 auto;
+}
+
+.maakdier__article{
+    grid-area: form;
+}
+
+.maakdier__article__form{
+    display: grid;
+    margin-top: 1rem;
+}
+
+.maakdier__article__form__input{
+    margin-bottom: 2rem;
+    font-size: 1.6rem;
+    border-radius: .5rem;
+}
+
+.form__input_lang, .form__input_middel, .form__input_kort{
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    border: solid .1rem black;
+}
+
+.form__input_lang{
+    width: 80%;
+}
+
+.form__input_middel{
+    width: 50%;
+    margin-bottom: .1rem;  
+}
+
+.form__input_kort{
+    width: 30%;
+}
+
+.form__input_groot{
+    height: 15rem;
+    padding: .5rem;
+}
+
+
+/*Dier*/
+.dier{
+   display: grid;
+   grid-template-areas: 
+        'foto naam'
+        'foto soort'
+        'foto plaats'
+        'foto geld'
+        'van tot'
+        'info delete';
+    grid-gap: 1rem;
+    background-color: var(--secondary-color);
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.dier__figure{
+    grid-area: foto;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.dier__figure__image{
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.dier__naam{
+    grid-area: naam;
+}
+
+.dier__soort{
+    grid-area: soort;
+}
+
+.dier__plaats{
+    grid-area: plaats;
+}
+
+.dier__geld{
+    grid-area: geld;
+}
+
+.dier__van{
+    grid-area: van;
+}
+
+.dier__tot{
+    grid-area: tot;
+}
+
+.dier__info{
+    grid-area: info;
+}
+
+.dier__delete{
+    grid-area: delete;
+}
+
+/*Dier info*/
+
+
+.dierinfo__figure{
+    width: 20rem;
+    margin: 0 auto;
+    height: 20rem;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.dierinfo__figure__image{
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.dierinfo_section{
+    margin-top: 1rem;
+    background-color: var(--secondary-color);
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+.bottom{
+    margin-bottom: 1rem;
+}
+
+.terug{
+    font-size: 1.8rem;
+}
+
+.terug:hover{
+    cursor: pointer;
+    color: white;
+}
+
+/*imageupload*/
+.imageupload_titel{
+    margin: 2rem 1rem;
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+.omgeving{
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.omgeving__image{
+    width: 100%;
+    max-width: 40rem;
+    border-radius: 1rem;
+}
+
+.profiel__gallerij__lijst{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 2rem;
+}
+
+.profiel__gallerij__title{
+    margin-bottom: 2rem;
+}
+
+.profiel__review__title{
+    margin-bottom: 2rem;
+}
+
+/*ERROR*/
+.card_error{
+    height: 14rem;
+}
+
+.error{
+    margin: 2rem 1rem;
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+/*review*/
+.review__form{
+    display: grid;
+}
+
+.top{
+    margin-top: 2rem;
+}
+
+.reviewcard{
+    background-color: var(--secondary-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.reviewcard__score{
+    font-weight: 800;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
+/*verzoeken*/
+.verzoek{
+    background-color: var(--secondary-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    display: grid;
+    grid-template-areas: 
+        'verzoek verzoek'
+        'profiel profiel'
+        'accepteren weigeren';
+    grid-column-gap: 1rem;
+}
+
+.verzoek__title{
+    grid-area: verzoek;
+}
+
+.verzoek__profiel{
+    grid-area: profiel;
+}
+
+.verzoek__accepteren{
+    grid-area: accepteren;
+}
+
+.verzoek__weigeren{
+    grid-area: weigeren;
+}
+
+/*BANNED*/
+.card_banned{
+    height: 50%;
+}
+
+.banned__image{
+    width: 100%;
+    border-radius: 1rem;
+}
+
+/*Admin*/
+.admin{
+    display: grid;
+    grid-template-areas: 
+        'titel'
+        'ban'
+        'oppas';
+    grid-row-gap: 1rem;
+}
+
+.admin__titel{
+    grid-area: titel;
+    max-width: 100rem;
+    margin: 0 auto;
+}
+
+.admin__ban{
+    grid-area: ban;
+}
+
+.admin__oppas{
+    grid-area: oppas;
+}
+
+.admin__ban__form{
+    display: grid;
+}
+
+/*Login & Register*/
+
+
+.login__logo{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 40rem;
+}
+
+.login__logo__image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+.login__logo__titel{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+
+.login__form{
+    background-color: var(--primary-color);
+    padding: 2rem;
+    width: 90%;
+    max-width: 40rem;
+    margin: 0 auto;
+    border-radius: 1rem;
+    height: 100%;
+    position: relative;
+}
+
+.login__form_grid{
+    display: grid;
+}
+
+.auth__input{
+    border-radius: .5rem;
+    padding: 1rem 1rem;
+    border: solid .1rem black;
+    width: 100%;
+    
+    margin-bottom: 2rem;
+    
+}
+
+.form__titel{
+    margin-bottom: 2rem;
+}
+
+.button_right{
+    float: right;
+}
+.button_left{
+    float: left;
+}
+
+.checkbox_login{
+    padding-left: 2rem;
+}
+
+.button_register{
+    position: absolute;
+    right: 2rem;
+}
+
+.registreer_div{
+    width: 100%;    
+    height: 5rem;
+}
+
+/*Responsive*/
+@media  only screen and (min-width: 600px) {
+    .profiel__gallerij__lijst{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media  only screen and (min-width: 800px) {
+    .dierenlijst__dieren__lijst{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media only screen and (min-width: 1000px){
+    .header_dropdown{
+        display: none;
+    }
+
+    .header__menu{
+        position: absolute;
+        top: 0;
+        left: 37%;
+        width: 100%;
+        background: none;
+        
+    }
+
+    .header__menu__link, .header__menu__list > li > form > a {
+        width: 15rem;
+        padding: 1rem 2.6rem;
+        margin-right: 1rem;
+        border-bottom-right-radius: 1.5rem;
+        border-top-left-radius: 0rem;
+        border-bottom-left-radius: 1.5rem;
+        float: left;
+        text-align: center;
+        box-shadow: .3rem .3rem 0 var(--dropdown-bg-color);
+    }
+
+    .index{
+        grid-template-areas: 
+        'welkom welkom'
+        'oppas verzoek';
+    }
+
+    .profiel__gallerij__lijst{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .dierenlijst__filter__lijst{
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    
+    .login{
+        position: absolute;
+        left: 50%;
+        top: 20%;
+        transform: translateX(-50%);
+    }
+}
+

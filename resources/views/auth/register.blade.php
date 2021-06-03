@@ -12,6 +12,7 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
+            <h2 class="form__titel">Registreer</h2>
             <!-- Name -->
             <div>
                 <x-label for="name" :value="__('Naam')" />
@@ -45,13 +46,14 @@
                                 name="password_confirmation" required />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+            <div class="flex items-center justify-end mt-4 registreer_div">
+                
+                <a class="button button_left" href="{{ route('login') }}">
+                    {{ __('Al Lid?') }}
                 </a>
 
-                <x-button class="ml-4">
-                    {{ __('Register') }}
+                <x-button class="ml-4 button button_send button_register">
+                    {{ __('Registreer') }}
                 </x-button>
             </div>
         </form>

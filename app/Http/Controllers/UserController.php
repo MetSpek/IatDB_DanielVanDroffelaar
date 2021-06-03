@@ -11,15 +11,14 @@ class UserController extends Controller
     public function index(){
         $user = Auth::user();
         $dieren = \App\Models\AnimalInfo::all()->where("eigenaar", $user->id);
-        $mensen = \App\Models\Reacties::all()->where("eigenaar_id", $user->id);
-        $verzoeken = \App\Models\Reacties::all()->where("zoeker_id", $user->id);
-       
-        
+        $mensen = \App\Models\Reacties::all()->where("eigenaar", $user->id);
+        $verzoeken = \App\Models\Reacties::all()->where("zoeker", $user->id);
         return view('index',[
             'user' => $user,
             'dier' => $dieren,
             'verzoek' => $mensen,
             'oppassen' => $verzoeken
+
         ]);
     }
 
@@ -30,7 +29,7 @@ class UserController extends Controller
             'user' => $user,
             'persoon' => \App\Models\User::find($id),
             'review' => \App\Models\Review::all()->where("reviewed", $id),
-            'image' => \App\Models\Images::all()->where("user_id", $id)
+            'image' => \App\Models\Images::all()->where("user", $id)
         ]);
     }
    
@@ -42,8 +41,10 @@ class UserController extends Controller
     }
 
     public function error($id){
+        $user = Auth::user();
         return view('error',[
-            'error' => \App\Models\Error::all()->where("id", $id)->first()
+            'error' => \App\Models\Error::all()->where("id", $id)->first(),
+            'user' => $user
         ]);
     }
     

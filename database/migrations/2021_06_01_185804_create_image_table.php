@@ -15,7 +15,8 @@ class CreateImageTable extends Migration
     {
         Schema::create('image', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user');
+            $table->foreign('user')->references('id')->on('users');
             $table->text('fileName');
         });
     }
@@ -27,6 +28,10 @@ class CreateImageTable extends Migration
      */
     public function down()
     {
+        Schema::table('image', function (Blueprint $table){
+            $table->dropForeign('image_user_foreign');
+        });
+
         Schema::dropIfExists('image');
     }
 }

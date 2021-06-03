@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             SoortenTableSeeder::class,
             ErrorTableSeeder::class,
+            DierenTableSeeder::class,
+            ReactiesTableSeeder::class,
         ]);
     }
 }

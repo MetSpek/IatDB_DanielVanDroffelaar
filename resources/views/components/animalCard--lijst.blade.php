@@ -2,29 +2,27 @@
 <script>
     function verwijder(url){
         localStorage.setItem("melding", "true");
-        localStorage.setItem("message", "Huisdier oppas aanvraag verwijdert");
+        localStorage.setItem("message", "Huisdier oppas aanvraag verwijderd");
         window.location.replace(url);
     }
 
 </script>
 @endsection
 
-<li>
-        <figure>
-            <img src="\storage\images\{{$dier->image}}" alt="Foto van het dier">
+<li class="dier">
+        <figure class="dier__figure">
+            <img class="dier__figure__image"  src="\storage\images\{{$dier->image}}" alt="Foto van het dier">
         </figure>
-        <h2>{{$dier->name}}</h2>
-        <h3>{{$dier->soort}}</h3>
-        <h3>{{$dier->plaats}}</h3>
-        <h4>{{$dier->costs}} euro per uur</h4>
-        <ul>
-            <li>Van:</li>
-            <li>{{$dier->start}} {{$dier->from}}</li>
-            <li>tot:</li>
-            <li>{{$dier->end}} {{$dier->to}}</li>
-        </ul>
-            <a href="/dierenlijst/{{$dier->number}}">Meer informatie</a>
         
-            <button onclick="verwijder('/dierenlijst/verwijder/{{$dier->number}}')">Verwijder</button>
+        <h3 class="dier__naam">{{$dier->name}}</h3>
+        <h3 class="dier__soort">{{$dier->soort}}</h3>
+        <h4 class="dier__plaats">Woonplaats: {{$dier->plaats}}</h4>
+        <h5 class="dier__geld">{{$dier->costs}}€ per dag</h4>
+        <p class="dier__van">Van: {{$dier->start}}</p>
+        <p class="dier__tot">Tot: {{$dier->end}}</p>
+        
+        <a class="button dier__info" href="/dierenlijst/{{$dier->number}}">Meer info</a>
+    
+        <button class="button button_verwijder dier__delete" onclick="verwijder('/dierenlijst/verwijder/{{$dier->number}}')">Verwijder</button>
         
 <li>

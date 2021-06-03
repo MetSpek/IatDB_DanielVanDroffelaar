@@ -12,7 +12,7 @@ class DierenController extends Controller
         $user = Auth::user();
         return view('dierenlijst',[
             'user' => $user, 
-            'dieren' => \App\Models\AnimalInfo::all()
+            'dier' => \App\Models\AnimalInfo::all()
         ]);
     }
 
@@ -70,8 +70,8 @@ class DierenController extends Controller
 
     public function verwijderDier($id){
         \App\Models\AnimalInfo::where("number", $id)->delete();
-        \App\Models\Reacties::where("dier_id", $id)->delete();
-        return redirect('/');
+        \App\Models\Reacties::where("dier", $id)->delete();
+        return back();
      }
 
 }
