@@ -25,7 +25,7 @@ class ReactiesTableSeeder extends Seeder
         DB::table('reacties')->insert([
             'eigenaar' => 1,
             'zoeker' => 3,
-            'zoeker_naam' => "Ave Geeve",
+            'zoeker_naam' => "Abe Geeve",
             'dier' => 4,
             'dier_naam' => "avocado"
         ]);

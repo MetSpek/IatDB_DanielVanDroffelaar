@@ -8,9 +8,8 @@ use DB;
 
 class VerzoekController extends Controller
 {
-    public function weigerVerzoek($dier, $id){
-        \App\Models\Reacties::where("dier", $dier)->where("zoeker", $id)->delete();
-        
+    public function weigerVerzoek($id){
+        \App\Models\Reacties::where("verzoek_id", $id)->delete();
         return redirect('/');
      }
  
@@ -53,21 +52,9 @@ class VerzoekController extends Controller
         
         
 
-        
-        
-
+    
         
 
         
-
-        
-    }
-
-    public function alGereageerd(){
-        return view('algereageerd');
-    }
-
-    public function eigenaar(){
-        return view('eigenaar');
     }
 }

@@ -822,5 +822,14 @@ main{
         top: 20%;
         transform: translateX(-50%);
     }
+
+    .auth__error{
+        color: var(--remove-border-color);
+        padding: 1rem;
+        border-radius: 1rem;
+        background-color: white;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
 }
 

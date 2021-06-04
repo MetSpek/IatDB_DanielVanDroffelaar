@@ -24,7 +24,7 @@ class AdminController extends Controller
         if($toBeBanned != null){
             \App\Models\AnimalInfo::where("eigenaar", $toBeBanned->id)->delete();
             if(\App\Models\Reacties::first() != null){
-                \App\Models\Reacties::first()->where("zoeker_naam", $username)->delete();
+                \App\Models\Reacties::first()->where("zoeker_naam", $persoon)->delete();
             }
             if($toBeBanned->banned == "BANNED"){
                 return redirect('/error/3');

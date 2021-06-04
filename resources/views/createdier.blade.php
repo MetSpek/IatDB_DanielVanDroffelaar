@@ -32,7 +32,7 @@
         </select>
 
         <label for="costs">Dag tarief in euro *</label>
-        <input class="maakdier__article__form__input form__input_kort" type="number" name="costs" id="costs" step="any" required>
+        <input class="maakdier__article__form__input form__input_kort" type="number" name="costs" id="costs" min="0" step="any" required>
 
         <label for="place">Plaats van wonen *</label>
         <input class="maakdier__article__form__input form__input_lang" type="text" name="place" id="place" required>

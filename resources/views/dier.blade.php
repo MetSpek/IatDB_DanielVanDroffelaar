@@ -18,7 +18,8 @@
             </figure>
             <h2>{{$dier->name}} - {{$dier->soort}}</h2>
             <h3 class="bottom">Eigenaar: {{$eigenaar->name}}</h3>
-            <h4 class="bottom">{{$dier->costs}}€ per uur</h4>
+            <h3 class="bottom">Woonplaats: {{$dier->plaats}}</h3>
+            <h4 class="bottom">{{$dier->costs}}€ per dag</h4>
             <h5>Datum/Tijd: </h5>
             <p> Van: {{$dier->start}} {{$dier->from}}</p>
             <p class="bottom">Tot: {{$dier->end}} {{$dier->to}}</p>
