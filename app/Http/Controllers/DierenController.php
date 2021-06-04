@@ -8,6 +8,7 @@ use DB;
 
 class DierenController extends Controller
 {
+    //Laat de dierenlijst zien
     public function dierenlijst(){
         $user = Auth::user();
         return view('dierenlijst',[
@@ -16,6 +17,7 @@ class DierenController extends Controller
         ]);
     }
 
+    //Laat de pagina waar je oppas aanvraag kan maken zien
     public function maakdier(){
         $user = Auth::user();
         return view('createdier',[
@@ -24,6 +26,7 @@ class DierenController extends Controller
         ]);
     }
 
+    //Laat de detailpagina zien van het dier
     public function showdier($number){
         $user = Auth::user();
         $dieren = \App\Models\AnimalInfo::all()->where("number", $number)->first();
@@ -38,6 +41,7 @@ class DierenController extends Controller
         ]);
     }
 
+    //Slaat het gemaakte dier op
     public function store(Request $request, \App\Models\AnimalInfo $info){
         $user = Auth::user();
         $image = $request->image;
@@ -68,6 +72,7 @@ class DierenController extends Controller
         }
     }
 
+    //verwijdert het dier
     public function verwijderDier($id){
         \App\Models\AnimalInfo::where("number", $id)->delete();
         \App\Models\Reacties::where("dier", $id)->delete();

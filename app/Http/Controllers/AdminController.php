@@ -8,6 +8,7 @@ use DB;
 
 class AdminController extends Controller
 {
+    //Laat de admin pagina zien
     public function show(){
         $user = Auth::user();
         return view('admin',[
@@ -16,6 +17,7 @@ class AdminController extends Controller
         ]);
     }
 
+    //banned de ingevoerde persoon als die bestaat en nog niet gebanned is
     public function ban(Request $request){  
         $usernames = \App\Models\User::all();
         $userids = \App\Models\User::all('id');

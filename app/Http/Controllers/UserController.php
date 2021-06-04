@@ -8,6 +8,7 @@ use DB;
 
 class UserController extends Controller
 {
+    //Laat de index/home pagina zien
     public function index(){
         $user = Auth::user();
         $dieren = \App\Models\AnimalInfo::all()->where("eigenaar", $user->id);
@@ -22,6 +23,7 @@ class UserController extends Controller
         ]);
     }
 
+    //Laat de profiel pagina zien
     public function profiel($id){
         $user = Auth::user();
 
@@ -33,7 +35,7 @@ class UserController extends Controller
         ]);
     }
    
-
+    //Laat de review invoer pagina zien
     public function review($id){
         return view('review',[
             'user' => \App\Models\User::find($id)

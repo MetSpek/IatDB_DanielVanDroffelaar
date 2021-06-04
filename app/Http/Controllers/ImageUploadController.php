@@ -14,6 +14,8 @@ class ImageUploadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //Laat de image pagina zien
     public function imageUpload(){
         $user = Auth::user();
 
@@ -27,6 +29,8 @@ class ImageUploadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //Slaat de gestuurde bestand op in de public/storage/imgages en schrijft imagenaam naar tabel
     public function imageUploadPost(Request $request, \App\Models\Images $images)
     {
         $user = Auth::user();
