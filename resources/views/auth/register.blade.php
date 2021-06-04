@@ -15,7 +15,7 @@
             <h2 class="form__titel">Registreer</h2>
             <!-- Name -->
             <div>
-                <x-label for="name" :value="__('Naam')" />
+                <x-label for="name" :value="__('Gebruikersnaam')" />
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             </div>
